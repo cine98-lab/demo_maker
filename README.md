@@ -6,6 +6,8 @@
 > **현재 단계: 기능 개발 1차.** 로그인·저장·배포·피드백이 **Supabase** 로 동작합니다.
 > AI 생성은 아직 규칙 기반 생성기(`src/lib/generator.ts`)이며, 나중에 Edge Function + AI 로 바꿀 수 있게 나눠 두었습니다.
 
+**배포:** https://demo-maker-pi.vercel.app — `main` 브랜치에 푸시하면 Vercel 이 자동으로 다시 배포합니다.
+
 ## Supabase 설정 (처음 한 번)
 
 1. `.env.example` 을 `.env.local` 로 복사하고 Project URL, anon(publishable) key 를 넣습니다.
