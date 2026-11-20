@@ -1,0 +1,6 @@
+/* 배포 완료: 밤하늘 바탕이라 포커스 링을 별빛(금색)으로 */
+.published-page button:focus-visible,
+.published-page a:focus-visible,
+.published-page input:focus-visible {
+  outline-color: var(--star-gold);
+}

@@ -1,0 +1,3 @@
+.dm-usermenu__item:hover,
+.dm-usermenu__item:focus-visible { background: #f1efe8 !important; outline: none; }
+.dm-usermenu__item:focus-visible { box-shadow: 0 0 0 2px var(--dawn-coral) inset; }

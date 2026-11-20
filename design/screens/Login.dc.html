@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>로그인 / 회원가입</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+body{margin:0;background:#141b3a}
+a{color:#b8461f}a:hover{color:#8f3415}
+input::placeholder{color:#8a8fa3}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #ff7a59;outline-offset:2px}
+</style>
+</helmet>
+<div style="font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif; color: #1e2233; background: #141b3a; min-height: 900px; display: flex; flex-wrap: wrap;">
+
+  <!-- 왼쪽: 밤하늘 -->
+  <section aria-hidden="true" style="flex: 1 1 420px; min-width: 0; color: #f4f2ff; padding: 48px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 32px;">
+    <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #f4f2ff; font-size: 20px; font-weight: 800;" tabindex="-1">
+      <svg width="28" height="28" viewBox="0 0 28 28"><polyline points="4,20 12,8 24,14" fill="none" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round"></polyline><circle cx="4" cy="20" r="3" fill="#ffd66b"></circle><circle cx="12" cy="8" r="3.5" fill="#ffd66b"></circle><circle cx="24" cy="14" r="2.5" fill="#ffd66b"></circle></svg>
+      데모메이커
+    </a>
+    <svg viewBox="0 0 400 260" style="width: 100%; max-width: 440px; height: auto;">
+      <g fill="#f4f2ff" opacity="0.35"><circle cx="30" cy="30" r="1.5"></circle><circle cx="370" cy="20" r="1"></circle><circle cx="210" cy="240" r="1.5"></circle><circle cx="390" cy="200" r="1"></circle><circle cx="10" cy="180" r="1"></circle></g>
+      <polyline points="50,190 130,110 220,140 310,60" fill="none" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      <line x1="310" y1="60" x2="350" y2="150" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 6"></line>
+      <circle cx="50" cy="190" r="7" fill="#ffd66b"></circle><circle cx="130" cy="110" r="9" fill="#ffd66b"></circle><circle cx="220" cy="140" r="6" fill="#ffd66b"></circle><circle cx="310" cy="60" r="11" fill="#ffd66b"></circle>
+      <circle cx="350" cy="150" r="6" fill="none" stroke="#ff7a59" stroke-width="2"></circle>
+    </svg>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <p style="margin: 0; font-size: 32px; line-height: 1.3; font-weight: 800; letter-spacing: -0.02em;">다음 별은<br>당신이 이어 주세요</p>
+      <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #ffb3a7;">로그인하면 만든 데모를 저장하고, 링크로 나누고, 피드백을 모아 볼 수 있어요.</p>
+    </div>
+  </section>
+
+  <!-- 오른쪽: 폼 -->
+  <main style="flex: 1 1 480px; min-width: 0; background: #fafaf7; padding: 48px 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+    <div style="width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 22px;">
+
+      <sc-if value="{{hasDraft}}" hint-placeholder-val="{{true}}">
+        <div role="status" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: #141b3a; color: #f4f2ff;">
+          <span style="width: 10px; height: 10px; margin-top: 6px; border-radius: 999px; background: #ffd66b; box-shadow: 0 0 12px rgba(255, 214, 107, 0.6); flex: none;"></span>
+          <span style="font-size: 14px; line-height: 1.6;">가입하면 작업 중인 데모 <b>"동네 반찬 공동구매"</b>가 계정에 저장되고, 바로 배포를 이어갈 수 있어요.</span>
+        </div>
+      </sc-if>
+
+      <div role="tablist" aria-label="로그인 또는 회원가입" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 4px; border-radius: 12px; background: #eeede8;">
+        <button type="button" role="tab" aria-selected="{{tLogin}}" onClick="{{toLogin}}" style="height: 42px; border: 0; border-radius: 9px; background: {{bgLogin}}; font: inherit; font-size: 15px; font-weight: {{wLogin}}; color: #1e2233; cursor: pointer;">로그인</button>
+        <button type="button" role="tab" aria-selected="{{tSignup}}" onClick="{{toSignup}}" style="height: 42px; border: 0; border-radius: 9px; background: {{bgSignup}}; font: inherit; font-size: 15px; font-weight: {{wSignup}}; color: #1e2233; cursor: pointer;">회원가입</button>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button type="button" style="height: 50px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 15px; font-weight: 700; color: #1e2233; cursor: pointer;">Google로 계속하기</button>
+        <button type="button" style="height: 50px; border: 0; border-radius: 12px; background: #fee500; font: inherit; font-size: 15px; font-weight: 700; color: #191919; cursor: pointer;">카카오로 계속하기</button>
+        <button type="button" style="height: 50px; border: 0; border-radius: 12px; background: #03c75a; font: inherit; font-size: 15px; font-weight: 700; color: #0b2b17; cursor: pointer;">네이버로 계속하기</button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: #5d6378;"><span style="flex: 1; height: 1px; background: #e3e2dc;"></span>또는 이메일로<span style="flex: 1; height: 1px; background: #e3e2dc;"></span></div>
+
+      <form style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label for="email" style="font-size: 14px; font-weight: 700;">이메일</label>
+          <input id="email" type="email" placeholder="name@example.com" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 15px; color: #1e2233;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label for="pw" style="font-size: 14px; font-weight: 700;">비밀번호</label>
+          <input id="pw" type="password" placeholder="8자 이상" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 15px; color: #1e2233;">
+        </div>
+        <sc-if value="{{isSignup}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <label for="pw2" style="font-size: 14px; font-weight: 700;">비밀번호 확인</label>
+            <input id="pw2" type="password" placeholder="한 번 더 입력해 주세요" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 15px; color: #1e2233;">
+          </div>
+          <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.5;"><input type="checkbox" style="width: 18px; height: 18px; margin-top: 1px; accent-color: #ff7a59;"><span><a href="#">이용약관</a>과 <a href="#">개인정보처리방침</a>에 동의합니다</span></label>
+          <a href="Published.dc.html" style="display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 12px; background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 16px; font-weight: 800;">가입하고 배포 이어가기</a>
+        </sc-if>
+        <sc-if value="{{isLogin}}" hint-placeholder-val="{{true}}">
+          <a href="Dashboard.dc.html" style="display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 12px; background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 16px; font-weight: 800;">로그인</a>
+          <a href="#" style="align-self: center; font-size: 14px; font-weight: 500; padding: 8px 0;">비밀번호를 잊으셨나요?</a>
+        </sc-if>
+      </form>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900},"hasDraft":{"editor":"boolean","default":true}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { mode: 'signup' }; }
+renderVals() {
+var self = this;
+var signup = ((this.state && this.state.mode) || 'signup') === 'signup';
+return {
+  hasDraft: this.props.hasDraft ?? true,
+  isSignup: signup, isLogin: !signup,
+  tLogin: signup ? 'false' : 'true', tSignup: signup ? 'true' : 'false',
+  bgLogin: signup ? 'transparent' : '#ffffff', bgSignup: signup ? '#ffffff' : 'transparent',
+  wLogin: signup ? 500 : 700, wSignup: signup ? 700 : 500,
+  toLogin: function () { self.setState({ mode: 'login' }); },
+  toSignup: function () { self.setState({ mode: 'signup' }); }
+};
+}
+}
+</script>
+</body>
+</html>

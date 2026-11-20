@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>새 프로젝트 만들기</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+body{margin:0;background:#fafaf7}
+a{color:#b8461f}a:hover{color:#8f3415}
+input::placeholder,textarea::placeholder{color:#8a8fa3}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #ff7a59;outline-offset:2px}
+</style>
+</helmet>
+<div style="font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif; color: #1e2233; background: #fafaf7; min-height: 1000px; display: flex; flex-direction: column;">
+
+  <header style="background: #ffffff; border-bottom: 1px solid #e3e2dc;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+      <a href="Dashboard.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #1e2233; font-size: 18px; font-weight: 800;">
+        <svg width="26" height="26" viewBox="0 0 28 28" aria-hidden="true"><polyline points="4,20 12,8 24,14" fill="none" stroke="#ff7a59" stroke-width="1.5" stroke-linecap="round"></polyline><circle cx="4" cy="20" r="3" fill="#141b3a"></circle><circle cx="12" cy="8" r="3.5" fill="#141b3a"></circle><circle cx="24" cy="14" r="2.5" fill="#141b3a"></circle></svg>
+        데모메이커
+      </a>
+      <ol aria-label="진행 단계" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px;">
+        <li style="display: flex; align-items: center; gap: 8px; font-weight: {{s1Weight}}; color: {{s1Color}};"><span style="width: 12px; height: 12px; border-radius: 999px; background: {{s1Dot}}; box-shadow: 0 0 0 {{s1Ring}}px #141b3a;"></span>시작 방법</li>
+        <li aria-hidden="true" style="width: 32px; height: 1px; background: #ff7a59;"></li>
+        <li style="display: flex; align-items: center; gap: 8px; font-weight: {{s2Weight}}; color: {{s2Color}};"><span style="width: 12px; height: 12px; border-radius: 999px; background: {{s2Dot}}; box-shadow: 0 0 0 {{s2Ring}}px #141b3a;"></span>정보 입력</li>
+        <li aria-hidden="true" style="width: 32px; height: 1px; background: #e3e2dc;"></li>
+        <li style="display: flex; align-items: center; gap: 8px; color: #5d6378;"><span style="width: 12px; height: 12px; border-radius: 999px; border: 2px dashed #c9c7bf; box-sizing: border-box;"></span>구조 확인</li>
+      </ol>
+    </div>
+  </header>
+
+  <main style="flex: 1; width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 40px 24px; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start;">
+
+    <div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
+
+      <!-- ① 시작 방법 선택 -->
+      <sc-if value="{{isStep1}}" hint-placeholder-val="{{true}}">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <h1 style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.02em;">어디서부터 시작해 볼까요?</h1>
+          <p style="margin: 0; font-size: 16px; color: #5d6378;">편한 방법을 고르세요. 어떤 방법이든 나중에 자유롭게 고칠 수 있어요.</p>
+        </div>
+        <div role="radiogroup" aria-label="시작 방법" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+          <button type="button" role="radio" aria-checked="{{mIdea}}" onClick="{{pickIdea}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px; border-radius: 12px; border: 2px solid {{bIdea}}; background: #ffffff; font: inherit; color: #1e2233; text-align: left; cursor: pointer;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8461f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13 7l4 4"></path></svg>
+            <span style="font-size: 18px; font-weight: 700;">아이디어 입력</span>
+            <span style="font-size: 14px; line-height: 1.6; color: #5d6378;">만들고 싶은 서비스를 글로 설명해요. 가장 빠른 방법이에요.</span>
+          </button>
+          <button type="button" role="radio" aria-checked="{{mWizard}}" onClick="{{pickWizard}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px; border-radius: 12px; border: 2px solid {{bWizard}}; background: #ffffff; font: inherit; color: #1e2233; text-align: left; cursor: pointer;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8461f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 0 1 5 0c0 1.7-2.5 2-2.5 4"></path><circle cx="12" cy="17" r="0.6" fill="#b8461f"></circle></svg>
+            <span style="font-size: 18px; font-weight: 700;">질문형 마법사</span>
+            <span style="font-size: 14px; line-height: 1.6; color: #5d6378;">무엇을 써야 할지 막막하다면, 질문 4개에 답해 주세요.</span>
+          </button>
+          <button type="button" role="radio" aria-checked="{{mTemplate}}" onClick="{{pickTemplate}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px; border-radius: 12px; border: 2px solid {{bTemplate}}; background: #ffffff; font: inherit; color: #1e2233; text-align: left; cursor: pointer;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8461f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"></rect><rect x="13" y="3" width="8" height="8" rx="2"></rect><rect x="3" y="13" width="8" height="8" rx="2"></rect><rect x="13" y="13" width="8" height="8" rx="2"></rect></svg>
+            <span style="font-size: 18px; font-weight: 700;">템플릿</span>
+            <span style="font-size: 14px; line-height: 1.6; color: #5d6378;">비슷한 서비스 템플릿에서 시작해 이름과 내용만 바꿔요.</span>
+          </button>
+        </div>
+      </sc-if>
+
+      <!-- ② 정보 입력 -->
+      <sc-if value="{{isStep2}}" hint-placeholder-val="{{false}}">
+
+        <sc-if value="{{showIdea}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <h1 style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.02em;">당신의 꿈을 들려주세요</h1>
+            <p style="margin: 0; font-size: 16px; color: #5d6378;">누구를 위한 서비스인지, 무엇을 할 수 있는지 적으면 더 정확해져요.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <label for="idea-text" style="font-size: 14px; font-weight: 700;">서비스 설명</label>
+            <textarea id="idea-text" rows="5" placeholder="예: 1인 가구를 위한 동네 반찬 공동구매 서비스. 반찬을 소분해서 이웃과 함께 사고, 정해진 장소에서 픽업해요." value="{{idea}}" onChange="{{onIdea}}" style="width: 100%; box-sizing: border-box; padding: 14px 16px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 16px; line-height: 1.6; color: #1e2233; resize: vertical;"></textarea>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+              <span style="font-size: 13px; color: #5d6378;">예시로 채우기</span>
+              <sc-for list="{{examples}}" as="ex" hint-placeholder-count="3">
+                <button type="button" onClick="{{ex.use}}" style="height: 34px; padding: 0 12px; border: 1px solid #e3e2dc; border-radius: 999px; background: #ffffff; font: inherit; font-size: 13px; color: #1e2233; cursor: pointer;">{{ex.label}}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showWizard}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <p style="margin: 0; font-size: 14px; font-weight: 700; color: #b8461f;">질문 {{qNum}} / 4</p>
+            <h1 style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.02em;">{{qTitle}}</h1>
+          </div>
+
+          <sc-if value="{{q0}}" hint-placeholder-val="{{false}}">
+            <div role="radiogroup" aria-label="서비스 종류" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px;">
+              <sc-for list="{{kinds}}" as="k" hint-placeholder-count="6">
+                <button type="button" role="radio" aria-checked="{{k.selected}}" onClick="{{k.pick}}" style="height: 64px; border-radius: 12px; border: 2px solid {{k.border}}; background: {{k.bg}}; font: inherit; font-size: 16px; font-weight: 700; color: #1e2233; cursor: pointer;">{{k.label}}</button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{q1}}" hint-placeholder-val="{{false}}">
+            <fieldset style="margin: 0; padding: 0; border: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">
+              <legend style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">주요 기능</legend>
+              <sc-for list="{{features}}" as="f" hint-placeholder-count="6">
+                <label style="display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 16px; border-radius: 12px; border: 1px solid {{f.border}}; background: #ffffff; font-size: 15px; cursor: pointer;"><input type="checkbox" checked="{{f.checked}}" onChange="{{f.toggle}}" style="width: 18px; height: 18px; accent-color: #ff7a59;">{{f.label}}</label>
+              </sc-for>
+            </fieldset>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <label for="feature-custom" style="font-size: 14px; font-weight: 700;">직접 입력</label>
+              <input id="feature-custom" type="text" placeholder="예: 픽업 장소 지도" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 15px; color: #1e2233;">
+            </div>
+          </sc-if>
+
+          <sc-if value="{{q2}}" hint-placeholder-val="{{false}}">
+            <div role="radiogroup" aria-label="분위기" style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <sc-for list="{{moods}}" as="m" hint-placeholder-count="5">
+                <button type="button" role="radio" aria-checked="{{m.selected}}" onClick="{{m.pick}}" style="height: 48px; padding: 0 20px; border-radius: 999px; border: 2px solid {{m.border}}; background: {{m.bg}}; font: inherit; font-size: 15px; font-weight: 700; color: #1e2233; cursor: pointer;">{{m.label}}</button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{q3}}" hint-placeholder-val="{{false}}">
+            <div role="radiogroup" aria-label="대표 색상" style="display: flex; flex-wrap: wrap; gap: 16px;">
+              <sc-for list="{{colors}}" as="c" hint-placeholder-count="6">
+                <button type="button" role="radio" aria-checked="{{c.selected}}" aria-label="{{c.label}}" onClick="{{c.pick}}" style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; font: inherit; font-size: 13px; color: #1e2233; cursor: pointer;"><span style="width: 56px; height: 56px; border-radius: 999px; background: {{c.hex}}; box-shadow: 0 0 0 {{c.ring}}px #ffffff, 0 0 0 {{c.ring2}}px #141b3a;"></span>{{c.label}}</button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <div style="display: flex; gap: 10px;">
+            <button type="button" onClick="{{qPrev}}" disabled="{{qPrevDisabled}}" style="height: 44px; padding: 0 16px; border: 1px solid #e3e2dc; border-radius: 10px; background: #ffffff; font: inherit; font-size: 14px; font-weight: 700; color: #1e2233; cursor: pointer;">이전 질문</button>
+            <sc-if value="{{qHasNext}}" hint-placeholder-val="{{true}}">
+              <button type="button" onClick="{{qNext}}" style="height: 44px; padding: 0 16px; border: 0; border-radius: 10px; background: #141b3a; font: inherit; font-size: 14px; font-weight: 700; color: #f4f2ff; cursor: pointer;">다음 질문</button>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showTemplate}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <h1 style="margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.02em;">이 템플릿으로 시작할게요</h1>
+            <p style="margin: 0; font-size: 16px; color: #5d6378;">서비스 이름과 상품 종류를 알려주시면 샘플 데이터를 바꿔 드려요.</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 16px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff;">
+            <div style="position: relative; width: 160px; height: 100px; border-radius: 8px; background: #141b3a; flex: none;">
+              <svg viewBox="0 0 160 100" style="position: absolute; inset: 0; width: 100%; height: 100%;" aria-hidden="true"><polyline points="20,70 55,34 92,52 132,24" fill="none" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round"></polyline><circle cx="20" cy="70" r="4" fill="#ffd66b"></circle><circle cx="55" cy="34" r="5" fill="#ffd66b"></circle><circle cx="92" cy="52" r="4" fill="#ffd66b"></circle><circle cx="132" cy="24" r="6" fill="#ffd66b"></circle></svg>
+            </div>
+            <div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 6px;">
+              <span style="align-self: flex-start; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: #ffe3dc; color: #8f3415;">쇼핑몰</span>
+              <span style="font-size: 17px; font-weight: 700;">동네 반찬 공동구매</span>
+              <span style="font-size: 13px; color: #5d6378;">페이지 6개</span>
+            </div>
+            <a href="Gallery.dc.html" style="font-size: 14px; font-weight: 700; text-decoration: none; padding: 10px 0;">다른 템플릿 고르기</a>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <label for="brand" style="font-size: 14px; font-weight: 700;">서비스 이름</label>
+              <input id="brand" type="text" placeholder="예: 반찬나눔" value="{{brand}}" onChange="{{onBrand}}" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 15px; color: #1e2233;">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <label for="product" style="font-size: 14px; font-weight: 700;">상품 종류</label>
+              <input id="product" type="text" placeholder="예: 소분 반찬, 밀키트" value="{{product}}" onChange="{{onProduct}}" style="height: 48px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 15px; color: #1e2233;">
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 20px; border-top: 1px solid #e3e2dc;">
+          <label for="project-name" style="font-size: 14px; font-weight: 700;">프로젝트 이름</label>
+          <input id="project-name" type="text" placeholder="대시보드에 보일 이름이에요" value="{{pname}}" onChange="{{onPname}}" style="max-width: 420px; height: 48px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; font: inherit; font-size: 15px; color: #1e2233;">
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- 오른쪽: 지금까지 모인 별 -->
+    <aside aria-labelledby="sum-title" style="flex: 1 1 300px; min-width: 0; background: #141b3a; color: #f4f2ff; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <h2 id="sum-title" style="margin: 0; font-size: 17px; font-weight: 700;">지금까지 모인 별</h2>
+        <p style="margin: 0; font-size: 13px; color: #ffb3a7;">하나씩 채울 때마다 별이 켜져요 · {{litCount}} / {{sumCount}}</p>
+      </div>
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px;">
+        <sc-for list="{{summary}}" as="s" hint-placeholder-count="4">
+          <li style="display: flex; gap: 12px; align-items: flex-start;">
+            <sc-if value="{{s.lit}}" hint-placeholder-val="{{false}}">
+              <span style="width: 12px; height: 12px; margin-top: 4px; border-radius: 999px; background: #ffd66b; box-shadow: 0 0 12px rgba(255, 214, 107, 0.6); flex: none;"></span>
+            </sc-if>
+            <sc-if value="{{s.dim}}" hint-placeholder-val="{{true}}">
+              <span style="width: 12px; height: 12px; margin-top: 4px; border-radius: 999px; border: 1.5px dashed #8d86b8; box-sizing: border-box; flex: none;"></span>
+            </sc-if>
+            <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+              <span style="font-size: 12px; font-weight: 700; color: #ffb3a7;">{{s.label}}</span>
+              <span style="font-size: 14px; line-height: 1.5; overflow-wrap: anywhere;">{{s.value}}</span>
+            </div>
+          </li>
+        </sc-for>
+      </ul>
+    </aside>
+  </main>
+
+  <footer style="background: #ffffff; border-top: 1px solid #e3e2dc;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+      <sc-if value="{{isStep1}}" hint-placeholder-val="{{true}}">
+        <a href="Dashboard.dc.html" style="font-size: 15px; font-weight: 700; color: #1e2233; text-decoration: none; padding: 12px 18px; border: 1px solid #e3e2dc; border-radius: 12px;">취소</a>
+        <button type="button" onClick="{{toStep2}}" style="height: 48px; padding: 0 26px; border: 0; border-radius: 12px; background: #ff7a59; color: #141b3a; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer;">다음</button>
+      </sc-if>
+      <sc-if value="{{isStep2}}" hint-placeholder-val="{{false}}">
+        <button type="button" onClick="{{toStep1}}" style="height: 48px; padding: 0 18px; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; color: #1e2233; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">시작 방법 바꾸기</button>
+        <sc-if value="{{showTemplate}}" hint-placeholder-val="{{false}}">
+          <a href="Editor.dc.html" style="display: inline-flex; align-items: center; height: 48px; padding: 0 26px; border-radius: 12px; background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 16px; font-weight: 800;">에디터에서 시작</a>
+        </sc-if>
+        <sc-if value="{{notTemplate}}" hint-placeholder-val="{{true}}">
+          <a href="Generating.dc.html" style="display: inline-flex; align-items: center; height: 48px; padding: 0 26px; border-radius: 12px; background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 16px; font-weight: 800;">다음: 구조 확인</a>
+        </sc-if>
+      </sc-if>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+var METHOD_NAMES = { idea: '아이디어 입력', wizard: '질문형 마법사', template: '템플릿' };
+var EXAMPLES = [
+  { label: '반찬 공동구매', text: '1인 가구를 위한 동네 반찬 공동구매 서비스. 반찬을 소분해서 이웃과 함께 사고, 정해진 장소에서 픽업해요.' },
+  { label: '반려견 산책 매칭', text: '바쁜 직장인과 동네 산책러를 이어주는 반려견 산책 예약 서비스. 산책 후 사진과 후기를 남겨요.' },
+  { label: '동네 스터디', text: '같은 동네 사람들끼리 관심사별 스터디 모임을 찾고 참여 신청하는 커뮤니티.' }
+];
+var KINDS = ['쇼핑몰', '예약', '커뮤니티', 'SaaS', '정보 소개', '기타'];
+var FEATURES = ['상품·게시글 목록', '상세 페이지', '회원가입·로그인', '예약·신청', '장바구니·결제', '후기·댓글'];
+var MOODS = ['따뜻하고 친근하게', '신뢰감 있게', '활기차게', '차분하게', '고급스럽게'];
+var COLORS = [
+  { label: '코랄', hex: '#ff7a59' }, { label: '숲', hex: '#2f7d5b' }, { label: '바다', hex: '#2f5bea' },
+  { label: '보라', hex: '#6b4fd8' }, { label: '먹', hex: '#1e2233' }, { label: '햇살', hex: '#f2b705' }
+];
+var Q_TITLES = ['어떤 종류의 서비스인가요?', '꼭 필요한 기능을 골라 주세요', '어떤 분위기였으면 하나요?', '대표 색상을 골라 주세요'];
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { step: 1, method: 'idea', idea: '', q: 0, kind: '', feats: {}, mood: '', color: '', brand: '', product: '', pname: '' };
+}
+renderVals() {
+var self = this;
+var st = this.state || {};
+var step = st.step || 1;
+var method = st.method || 'idea';
+var q = st.q || 0;
+var feats = st.feats || {};
+function sel(v) { return v ? '#ff7a59' : '#e3e2dc'; }
+function set(k) { return function (e) { var o = {}; o[k] = e.target.value; self.setState(o); }; }
+var featList = FEATURES.filter(function (f) { return feats[f]; });
+var summary = [{ label: '시작 방법', value: METHOD_NAMES[method] }];
+if (method === 'idea') summary.push({ label: '서비스 설명', value: st.idea || '아직 비어 있어요' , filled: !!st.idea });
+if (method === 'wizard') {
+  summary.push({ label: '서비스 종류', value: st.kind || '아직 고르지 않았어요', filled: !!st.kind });
+  summary.push({ label: '주요 기능', value: featList.length ? featList.join(', ') : '아직 고르지 않았어요', filled: featList.length > 0 });
+  summary.push({ label: '분위기', value: st.mood || '아직 고르지 않았어요', filled: !!st.mood });
+  summary.push({ label: '대표 색상', value: st.color || '아직 고르지 않았어요', filled: !!st.color });
+}
+if (method === 'template') {
+  summary.push({ label: '템플릿', value: '동네 반찬 공동구매', filled: true });
+  summary.push({ label: '서비스 이름', value: st.brand || '아직 비어 있어요', filled: !!st.brand });
+  summary.push({ label: '상품 종류', value: st.product || '아직 비어 있어요', filled: !!st.product });
+}
+summary.push({ label: '프로젝트 이름', value: st.pname || '아직 비어 있어요', filled: !!st.pname });
+summary = summary.map(function (s, i) { var lit = i === 0 ? step >= 1 : !!s.filled; return { label: s.label, value: s.value, lit: lit, dim: !lit }; });
+var litCount = summary.filter(function (s) { return s.lit; }).length;
+return {
+  isStep1: step === 1, isStep2: step === 2,
+  s1Weight: step === 1 ? 700 : 400, s1Color: step === 1 ? '#1e2233' : '#5d6378', s1Dot: step === 1 ? '#ffd66b' : '#141b3a', s1Ring: step === 1 ? 3 : 0,
+  s2Weight: step === 2 ? 700 : 400, s2Color: step === 2 ? '#1e2233' : '#5d6378', s2Dot: step === 2 ? '#ffd66b' : '#e3e2dc', s2Ring: step === 2 ? 3 : 0,
+  mIdea: method === 'idea' ? 'true' : 'false', mWizard: method === 'wizard' ? 'true' : 'false', mTemplate: method === 'template' ? 'true' : 'false',
+  bIdea: sel(method === 'idea'), bWizard: sel(method === 'wizard'), bTemplate: sel(method === 'template'),
+  pickIdea: function () { self.setState({ method: 'idea' }); },
+  pickWizard: function () { self.setState({ method: 'wizard', q: 0 }); },
+  pickTemplate: function () { self.setState({ method: 'template' }); },
+  toStep2: function () { self.setState({ step: 2 }); },
+  toStep1: function () { self.setState({ step: 1 }); },
+  showIdea: method === 'idea', showWizard: method === 'wizard', showTemplate: method === 'template', notTemplate: method !== 'template',
+  idea: st.idea || '', onIdea: set('idea'),
+  examples: EXAMPLES.map(function (ex) { return { label: ex.label, use: function () { self.setState({ idea: ex.text }); } }; }),
+  qNum: q + 1, qTitle: Q_TITLES[q], q0: q === 0, q1: q === 1, q2: q === 2, q3: q === 3,
+  qPrev: function () { self.setState({ q: Math.max(0, q - 1) }); }, qPrevDisabled: q === 0,
+  qNext: function () { self.setState({ q: Math.min(3, q + 1) }); }, qHasNext: q < 3,
+  kinds: KINDS.map(function (k) { var on = st.kind === k; return { label: k, selected: on ? 'true' : 'false', border: sel(on), bg: on ? '#fff1ec' : '#ffffff', pick: function () { self.setState({ kind: k }); } }; }),
+  features: FEATURES.map(function (f) { var on = !!feats[f]; return { label: f, checked: on, border: sel(on), toggle: function () { var n = Object.assign({}, feats); n[f] = !on; self.setState({ feats: n }); } }; }),
+  moods: MOODS.map(function (m) { var on = st.mood === m; return { label: m, selected: on ? 'true' : 'false', border: sel(on), bg: on ? '#fff1ec' : '#ffffff', pick: function () { self.setState({ mood: m }); } }; }),
+  colors: COLORS.map(function (c) { var on = st.color === c.label; return { label: c.label, hex: c.hex, selected: on ? 'true' : 'false', ring: on ? 3 : 0, ring2: on ? 5 : 0, pick: function () { self.setState({ color: c.label }); } }; }),
+  brand: st.brand || '', onBrand: set('brand'),
+  product: st.product || '', onProduct: set('product'),
+  pname: st.pname || '', onPname: set('pname'),
+  summary: summary, litCount: litCount, sumCount: summary.length
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+.main-page input::placeholder {
+  color: #8a8fb0;
+}
+
+.dm-dot {
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.dm-label {
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.2s ease;
+}
+
+.dm-label .dm-go {
+  display: none;
+  font-weight: 700;
+}
+
+.dm-label:hover {
+  box-shadow: 0 0 18px rgba(255, 214, 107, 0.45);
+  border-color: var(--star-gold) !important;
+  z-index: 2;
+}
+
+.dm-label:hover .dm-go {
+  display: inline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dm-dot,
+  .dm-label {
+    transition: none;
+  }
+}

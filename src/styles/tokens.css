@@ -1,0 +1,23 @@
+/* 데모메이커 디자인 토큰 — design/design-system/tokens.json 과 같은 값 */
+:root {
+  --night-900: #141b3a;
+  --violet-700: #3b2f6b;
+  --dawn-coral: #ff7a59;
+  --dawn-coral-ink: #b8461f;
+  --dawn-pink: #ffb3a7;
+  --star-gold: #ffd66b;
+  --surface: #fafaf7;
+  --surface-raised: #ffffff;
+  --line: #e3e2dc;
+  --ink: #1e2233;
+  --ink-muted: #5d6378;
+  --ink-on-night: #f4f2ff;
+  --success: #23855a;
+  --danger: #c93a3a;
+
+  --font-sans: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+}

@@ -1,0 +1,131 @@
+/* 방문자 화면 공통 틀: 피드백 핀 · 의견 카드 · 하단 고정 바 */
+.ds-root {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.ds-stage {
+  position: relative;
+  flex: 1;
+}
+
+.ds-place {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgba(20, 27, 58, 0.08);
+  cursor: crosshair;
+  outline: 2px dashed var(--dawn-coral);
+  outline-offset: -6px;
+}
+.ds-place-hint {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--night-900);
+  color: var(--ink-on-night);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.ds-place-hint__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--star-gold);
+}
+
+.dm-pop {
+  animation: dmPop 0.25s ease-out;
+}
+
+.ds-card {
+  position: absolute;
+  width: 320px;
+  max-width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 48px rgba(20, 27, 58, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 5;
+  /* 화면이 아주 낮아도 제출 버튼까지 닿도록 카드 안에서 스크롤 */
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+}
+.ds-card fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ds-card legend {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.ds-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.96);
+  border-top: 1px solid var(--line);
+}
+.ds-bar__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.ds-made {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding: 8px 0;
+}
+.ds-made:hover {
+  color: var(--ink);
+}
+
+@keyframes dmPop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dm-pop {
+    animation: none !important;
+  }
+}

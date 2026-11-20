@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>데모메이커 랜딩</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+body{margin:0;background:#fafaf7}
+a{color:#b8461f}a:hover{color:#8f3415}
+input::placeholder{color:#8a8fb0}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #ffd66b;outline-offset:3px}
+.dm-dot{transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .5s ease,background-color .5s ease,box-shadow .5s ease}
+.dm-label{transition:opacity .4s ease,transform .5s cubic-bezier(.22,1,.36,1),box-shadow .2s ease}
+.dm-label .dm-go{display:none;font-weight:700}
+.dm-label:hover{box-shadow:0 0 18px rgba(255,214,107,.45);border-color:#ffd66b !important;z-index:2}
+.dm-label:hover .dm-go{display:inline}
+@media (prefers-reduced-motion: reduce){.dm-dot,.dm-label{transition:none}}
+</style>
+</helmet>
+<div style="font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif; color: #1e2233; background: #fafaf7; min-height: 100%;">
+
+  <!-- 상단 메뉴 -->
+  <header style="background: #141b3a;">
+    <nav aria-label="주 메뉴" style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #f4f2ff; font-size: 20px; font-weight: 800; letter-spacing: -0.02em;">
+        <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><polyline points="4,20 12,8 24,14" fill="none" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round"></polyline><circle cx="4" cy="20" r="3" fill="#ffd66b"></circle><circle cx="12" cy="8" r="3.5" fill="#ffd66b"></circle><circle cx="24" cy="14" r="2.5" fill="#ffd66b"></circle></svg>
+        데모메이커
+      </a>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+        <a href="#" style="color: #f4f2ff; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px;">템플릿 갤러리</a>
+        <a href="Login.dc.html" style="color: #f4f2ff; text-decoration: none; font-size: 15px; font-weight: 500; padding: 12px 14px;">로그인</a>
+        <a href="NewProject.dc.html" style="background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 15px; font-weight: 700; padding: 12px 20px; border-radius: 12px;">시작하기</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ① 히어로 -->
+  <section aria-labelledby="hero-title" style="background: #141b3a; color: #f4f2ff;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px;">
+      <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+        <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: #ffb3a7;">아이디어가 데모가 되는 곳</p>
+        <h1 id="hero-title" style="margin: 0; font-size: 56px; line-height: 1.12; font-weight: 800; letter-spacing: -0.03em; text-wrap: balance;">당신의 꿈은<br>어떤 모양인가요?</h1>
+        <p style="margin: 0; font-size: 18px; line-height: 1.7;">만들고 싶은 서비스를 한 문장으로 적어 주세요.<br>직접 눌러볼 수 있는 데모 사이트로 바로 보여드릴게요.</p>
+        <form style="display: flex; flex-direction: column; gap: 10px; background: #3b2f6b; padding: 20px; border-radius: 20px; max-width: 600px;">
+          <label for="idea" style="font-size: 14px; font-weight: 700; color: #ffd66b;">만들고 싶은 서비스</label>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <input id="idea" type="text" placeholder="예: 1인 가구를 위한 동네 반찬 공동구매 서비스" style="flex: 1 1 280px; min-width: 0; height: 52px; box-sizing: border-box; padding: 0 16px; border-radius: 12px; border: 1px solid #5a4d92; background: #141b3a; color: #f4f2ff; font: inherit; font-size: 16px;">
+            <a href="Generating.dc.html" style="display: inline-flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 12px; background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 16px; font-weight: 800;">데모 만들기</a>
+          </div>
+        </form>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; font-size: 15px;">
+          <a href="Gallery.dc.html" style="color: #ffd66b; font-weight: 700; text-decoration: none; padding: 12px 0;">템플릿으로 시작 →</a>
+          <span>가입 없이 바로 시작할 수 있어요</span>
+        </div>
+      </div>
+      <div style="flex: 1 1 360px; min-width: 0; display: flex; justify-content: center;">
+        <div aria-hidden="true" onPointerMove="{{onMove}}" onPointerLeave="{{onLeave}}" style="position: relative; width: 100%; max-width: 480px; aspect-ratio: 6 / 5; touch-action: pan-y; cursor: crosshair;">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
+            <polyline points="{{line}}" fill="none" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" style="opacity: {{lineO}}; transition: opacity 0.45s ease;"></polyline>
+          </svg>
+          <sc-for list="{{dots}}" as="d" hint-placeholder-count="120">
+            <span class="dm-dot" style="position: absolute; left: {{d.x}}%; top: {{d.y}}%; width: {{d.size}}px; height: {{d.size}}px; margin: {{d.m}}px 0 0 {{d.m}}px; border-radius: 999px; background: {{d.color}}; opacity: {{d.o}}; box-shadow: {{d.glow}}; transform: scale({{d.s}}); pointer-events: none;"></span>
+          </sc-for>
+          <sc-for list="{{labels}}" as="l" hint-placeholder-count="11">
+            <a class="dm-label" href="{{l.href}}" tabindex="-1" style="position: absolute; left: {{l.x}}%; top: {{l.y}}%; transform: {{l.tf}}; opacity: {{l.o}}; white-space: nowrap; padding: 4px 10px; border-radius: 999px; font-size: 12px; line-height: 1.4; font-weight: 700; text-decoration: none; color: {{l.color}}; background: {{l.bg}}; border: 1px solid {{l.border}}; pointer-events: {{l.pe}}; cursor: pointer;">{{l.text}}<span style="font-weight: 500; opacity: 0.75;">{{l.sub}}</span><span class="dm-go">{{l.go}}</span></a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② 이용 단계 -->
+  <section aria-labelledby="steps-title" style="background: #fafaf7;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 640px;">
+        <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: #b8461f;">이렇게 만들어요</p>
+        <h2 id="steps-title" style="margin: 0; font-size: 36px; line-height: 1.25; font-weight: 800; letter-spacing: -0.02em;">점 하나에서 별자리까지</h2>
+      </div>
+      <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px 24px;">
+        <li style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 12px;"><span style="width: 14px; height: 14px; border-radius: 999px; background: #ffd66b; box-shadow: 0 0 0 4px #fff3cf; flex: none;"></span><span style="flex: 1; height: 1px; background: #ff7a59;"></span></div>
+          <p style="margin: 0; font-size: 13px; font-weight: 700; color: #5d6378;">1단계 · 꿈</p>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700;">설명하기</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">만들고 싶은 서비스를 글로 적거나, 몇 가지 질문에 답하거나, 템플릿을 골라요.</p>
+        </li>
+        <li style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 12px;"><span style="width: 14px; height: 14px; border-radius: 999px; background: #ffd66b; box-shadow: 0 0 0 4px #fff3cf; flex: none;"></span><span style="flex: 1; height: 1px; background: #ff7a59;"></span></div>
+          <p style="margin: 0; font-size: 13px; font-weight: 700; color: #5d6378;">2단계 · 목표</p>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700;">다듬기</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">제안된 페이지 구성을 확인하고, 블록 편집기로 문구와 이미지, 색을 고쳐요.</p>
+        </li>
+        <li style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 12px;"><span style="width: 14px; height: 14px; border-radius: 999px; background: #ffd66b; box-shadow: 0 0 0 4px #fff3cf; flex: none;"></span><span style="flex: 1; height: 1px; background: #ff7a59;"></span></div>
+          <p style="margin: 0; font-size: 13px; font-weight: 700; color: #5d6378;">3단계 · 함께</p>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700;">공유하기</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">버튼 한 번으로 배포하고, 링크를 보내 실제 서비스처럼 눌러보게 해요.</p>
+        </li>
+        <li style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 12px;"><span style="width: 14px; height: 14px; border-radius: 999px; background: #ffd66b; box-shadow: 0 0 0 4px #fff3cf, 0 0 24px rgba(255, 214, 107, 0.45); flex: none;"></span></div>
+          <p style="margin: 0; font-size: 13px; font-weight: 700; color: #5d6378;">4단계 · 함께</p>
+          <h3 style="margin: 0; font-size: 20px; font-weight: 700;">피드백 받기</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">방문자가 화면 위에 남긴 의견을 모아 보고, 바로 고쳐서 다시 나눠요.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ③ 핵심 기능 -->
+  <section aria-labelledby="features-title" style="background: #ffffff; border-top: 1px solid #e3e2dc; border-bottom: 1px solid #e3e2dc;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 640px;">
+        <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: #b8461f;">할 수 있는 일</p>
+        <h2 id="features-title" style="margin: 0; font-size: 36px; line-height: 1.25; font-weight: 800; letter-spacing: -0.02em;">생각을 보여주는 데 필요한 네 가지</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+        <article style="display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid #e3e2dc; border-radius: 12px; background: #fafaf7;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8461f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"></path></svg>
+          <h3 style="margin: 0; font-size: 19px; font-weight: 700;">AI가 초안을 그려요</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">설명 한 줄로 필요한 페이지, 메뉴, 문구, 샘플 데이터까지 담은 여러 페이지 초안이 만들어져요.</p>
+        </article>
+        <article style="display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid #e3e2dc; border-radius: 12px; background: #fafaf7;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8461f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"></rect><rect x="13" y="3" width="8" height="8" rx="2"></rect><rect x="3" y="13" width="18" height="8" rx="2"></rect></svg>
+          <h3 style="margin: 0; font-size: 19px; font-weight: 700;">블록으로 고쳐요</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">헤더, 카드 목록, 폼 같은 블록을 끌어다 놓고, 글자는 화면에서 바로 눌러 수정해요. 코드는 필요 없어요.</p>
+        </article>
+        <article style="display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid #e3e2dc; border-radius: 12px; background: #fafaf7;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8461f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 7-6 2-2 6z"></path><path d="M13 12l5 5"></path></svg>
+          <h3 style="margin: 0; font-size: 19px; font-weight: 700;">진짜처럼 눌러봐요</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">버튼은 다음 페이지로 이어지고, 로그인과 폼 제출도 흉내 내요. 그림이 아니라 체험하는 데모예요.</p>
+        </article>
+        <article style="display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid #e3e2dc; border-radius: 12px; background: #fafaf7;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b8461f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"></path><circle cx="12" cy="11" r="2"></circle></svg>
+          <h3 style="margin: 0; font-size: 19px; font-weight: 700;">화면 위에서 의견을 받아요</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">링크를 받은 사람이 원하는 위치에 핀을 꽂아 댓글을 남겨요. 어디에 대한 의견인지 바로 보여요.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 예시 데모 갤러리 -->
+  <section aria-labelledby="gallery-title" style="background: #fafaf7;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px;">
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 640px;">
+          <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: #b8461f;">예시 데모</p>
+          <h2 id="gallery-title" style="margin: 0; font-size: 36px; line-height: 1.25; font-weight: 800; letter-spacing: -0.02em;">먼저 그려진 별자리들</h2>
+        </div>
+        <a href="Gallery.dc.html" style="font-size: 15px; font-weight: 700; text-decoration: none; padding: 12px 0;">템플릿 전체 보기 →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+        <article style="display: flex; flex-direction: column; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; overflow: hidden; box-shadow: 0 1px 2px rgba(20, 27, 58, 0.06), 0 4px 16px rgba(20, 27, 58, 0.04);">
+          <div style="aspect-ratio: 16 / 10; max-width: 100%; background: #141b3a; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; position: relative;">
+            <div style="display: flex; gap: 6px;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #3b2f6b;"></span><span style="width: 8px; height: 8px; border-radius: 999px; background: #3b2f6b;"></span><span style="width: 8px; height: 8px; border-radius: 999px; background: #3b2f6b;"></span></div>
+            <div style="width: 55%; height: 14px; border-radius: 4px; background: #f4f2ff;"></div>
+            <div style="width: 35%; height: 10px; border-radius: 4px; background: #3b2f6b;"></div>
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: auto;"><span style="height: 52px; border-radius: 6px; background: #3b2f6b;"></span><span style="height: 52px; border-radius: 6px; background: #3b2f6b;"></span><span style="height: 52px; border-radius: 6px; background: #3b2f6b;"></span></div>
+            <span style="position: absolute; top: 44px; right: 32px; width: 22px; height: 22px; border-radius: 999px; background: #ffd66b; color: #141b3a; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">2</span>
+          </div>
+          <div style="padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 10px;">
+            <span style="align-self: flex-start; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #ffe3dc; color: #8f3415;">쇼핑몰</span>
+            <h3 style="margin: 0; font-size: 19px; font-weight: 700;">동네 반찬 공동구매</h3>
+            <p style="margin: 0; font-size: 14px; color: #5d6378;">페이지 6개 · 회원가입부터 결제 완료까지</p>
+            <a href="PublicDemo.dc.html" style="font-size: 15px; font-weight: 700; text-decoration: none; padding: 8px 0 0;">체험하기 →</a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; overflow: hidden; box-shadow: 0 1px 2px rgba(20, 27, 58, 0.06), 0 4px 16px rgba(20, 27, 58, 0.04);">
+          <div style="aspect-ratio: 16 / 10; max-width: 100%; background: #fff3ef; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; position: relative;">
+            <div style="display: flex; gap: 6px;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #ffb3a7;"></span><span style="width: 8px; height: 8px; border-radius: 999px; background: #ffb3a7;"></span><span style="width: 8px; height: 8px; border-radius: 999px; background: #ffb3a7;"></span></div>
+            <div style="display: flex; gap: 12px; margin-top: 6px;"><span style="width: 64px; height: 64px; border-radius: 999px; background: #ffb3a7; flex: none;"></span><div style="flex: 1; display: flex; flex-direction: column; gap: 8px; justify-content: center;"><span style="width: 70%; height: 12px; border-radius: 4px; background: #1e2233;"></span><span style="width: 45%; height: 10px; border-radius: 4px; background: #ffb3a7;"></span></div></div>
+            <span style="margin-top: auto; align-self: flex-start; width: 40%; height: 32px; border-radius: 8px; background: #ff7a59;"></span>
+            <span style="position: absolute; top: 96px; right: 40px; width: 22px; height: 22px; border-radius: 999px; background: #ffd66b; color: #141b3a; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">5</span>
+          </div>
+          <div style="padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 10px;">
+            <span style="align-self: flex-start; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #ffe3dc; color: #8f3415;">예약</span>
+            <h3 style="margin: 0; font-size: 19px; font-weight: 700;">반려견 산책 매칭</h3>
+            <p style="margin: 0; font-size: 14px; color: #5d6378;">페이지 7개 · 산책러 찾기부터 후기까지</p>
+            <a href="DemoWalk.dc.html" style="font-size: 15px; font-weight: 700; text-decoration: none; padding: 8px 0 0;">체험하기 →</a>
+          </div>
+        </article>
+        <article style="display: flex; flex-direction: column; border: 1px solid #e3e2dc; border-radius: 12px; background: #ffffff; overflow: hidden; box-shadow: 0 1px 2px rgba(20, 27, 58, 0.06), 0 4px 16px rgba(20, 27, 58, 0.04);">
+          <div style="aspect-ratio: 16 / 10; max-width: 100%; background: #3b2f6b; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; position: relative;">
+            <div style="display: flex; gap: 6px;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span></div>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;"><span style="height: 26px; border-radius: 6px; background: #141b3a;"></span><span style="height: 26px; border-radius: 6px; background: #141b3a;"></span><span style="height: 26px; border-radius: 6px; background: #141b3a;"></span></div>
+            <span style="margin-top: auto; width: 30%; height: 10px; border-radius: 4px; background: #ffb3a7;"></span>
+            <span style="position: absolute; top: 72px; right: 28px; width: 22px; height: 22px; border-radius: 999px; background: #ffd66b; color: #141b3a; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">3</span>
+          </div>
+          <div style="padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 10px;">
+            <span style="align-self: flex-start; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #ffe3dc; color: #8f3415;">커뮤니티</span>
+            <h3 style="margin: 0; font-size: 19px; font-weight: 700;">동네 스터디 모임</h3>
+            <p style="margin: 0; font-size: 14px; color: #5d6378;">페이지 5개 · 모임 찾기부터 참여 신청까지</p>
+            <a href="DemoStudy.dc.html" style="font-size: 15px; font-weight: 700; text-decoration: none; padding: 8px 0 0;">체험하기 →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ 하단 행동 유도 -->
+  <section aria-labelledby="cta-title" style="background: #141b3a; color: #f4f2ff;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;">
+      <svg width="120" height="40" viewBox="0 0 120 40" aria-hidden="true"><polyline points="8,28 44,10 80,24 112,8" fill="none" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round"></polyline><circle cx="8" cy="28" r="4" fill="#ffd66b"></circle><circle cx="44" cy="10" r="5" fill="#ffd66b"></circle><circle cx="80" cy="24" r="3.5" fill="#ffd66b"></circle><circle cx="112" cy="8" r="4" fill="none" stroke="#ff7a59" stroke-width="2"></circle></svg>
+      <h2 id="cta-title" style="margin: 0; font-size: 40px; line-height: 1.25; font-weight: 800; letter-spacing: -0.02em; text-wrap: balance;">첫 번째 별을 찍어볼까요?</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.7;">혼자 품은 생각도 눈앞에 보이면 함께 이야기할 수 있어요.<br>지금 바로 같이 만들어 봐요.</p>
+      <a href="NewProject.dc.html" style="background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 17px; font-weight: 800; padding: 16px 32px; border-radius: 12px;">시작하기</a>
+    </div>
+  </section>
+
+  <!-- 공통 하단 -->
+  <footer style="background: #fafaf7; border-top: 1px solid #e3e2dc;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+      <span style="font-size: 16px; font-weight: 800;">데모메이커</span>
+      <nav aria-label="하단 메뉴" style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px;">
+        <a href="#" style="color: #5d6378; text-decoration: none; padding: 8px 0;">서비스 소개</a>
+        <a href="#" style="color: #5d6378; text-decoration: none; padding: 8px 0;">이용약관</a>
+        <a href="#" style="color: #5d6378; text-decoration: none; padding: 8px 0;">개인정보처리방침</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+var COLS = 12, ROWS = 10, RADIUS = 150;
+// 별자리를 이루는 칸: "열,행" → 지름(px)
+var STARS = { '1,7': 14, '3,4': 18, '5,5': 12, '7,2': 22, '10,4': 12, '8,7': 16 };
+var PATH = ['1,7', '3,4', '5,5', '7,2', '10,4', '8,7', '5,5'];
+// 불이 밝혀지면 떠오르는 예시 서비스 이름 (별자리 별 = 금색 라벨, 숨은 점 = 보라 라벨)
+// [이름, 분류, 이동할 화면] — 데모가 있는 곳은 공개 데모로, 아직 없는 아이디어는 새 프로젝트 만들기로
+var NAMES = {
+  '7,2': ['반찬나눔', ' · 공동구매', 'PublicDemo'], '3,4': ['동네 책방', ' · 예약', 'DemoBookstore', 'left'], '1,7': ['도자기 공방', ' · 클래스', 'DemoPottery'],
+  '5,5': ['코딩 스터디', ' · 모집', 'DemoStudy', 'below'], '10,4': ['함께 캠핑', ' · 동행', 'DemoCamping'], '8,7': ['골목 카페', ' · 주문', 'DemoCafe'],
+  '10,1': ['산책 메이트', '', 'DemoWalk'],
+  '1,2': ['독서 모임', '', ''], '5,8': ['플리마켓', '', ''], '3,9': ['주말 텃밭', '', ''], '10,9': ['재능 기부', '', '']
+};
+function cellX(c) { return (c + 0.5) / COLS * 100; }
+function cellY(r) { return (r + 0.5) / ROWS * 100; }
+// gsap.utils.mapRange와 같은 역할: 거리 → 0~1 영향도
+function mapRange(inMin, inMax, outMin, outMax, v) { var t = (v - inMin) / (inMax - inMin); t = Math.max(0, Math.min(1, t)); return outMin + (outMax - outMin) * t; }
+// 라벨 위치: 기본 위. 동네 책방(3,4)과 코딩 스터디(5,5)는 두 칸 거리라 왼쪽 / 아래로 비켜 둔다
+function tfFor(place, gap) {
+  if (place === 'below') return 'translate(-50%, 0) translateY(' + gap + 'px)';
+  if (place === 'left') return 'translate(-100%, -50%) translateX(' + (-gap - 2) + 'px)';
+  return 'translate(-50%, -100%) translateY(' + (-gap) + 'px)';
+}
+function mix(a, b, t) { return Math.round(a + (b - a) * t); }
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { active: false, x: 0, y: 0, w: 1, h: 1 }; }
+componentWillUnmount() { if (this._raf) cancelAnimationFrame(this._raf); }
+renderVals() {
+var self = this;
+var st = this.state || {};
+var dots = [];
+var labels = [];
+var near = 0;
+for (var r = 0; r < ROWS; r++) {
+  for (var c = 0; c < COLS; c++) {
+    var key = c + ',' + r;
+    var star = STARS[key];
+    var x = cellX(c), y = cellY(r);
+    var t = 0;
+    if (st.active) {
+      var dx = x / 100 * st.w - st.x, dy = y / 100 * st.h - st.y;
+      t = mapRange(RADIUS, 0, 0, 1, Math.sqrt(dx * dx + dy * dy));
+      t = t * t * (3 - 2 * t);
+    }
+    if (star) {
+      near = Math.max(near, t);
+      dots.push({ x: x, y: y, size: star, m: -star / 2, color: '#ffd66b', o: 1, s: (1 + 0.6 * t).toFixed(3),
+        glow: '0 0 ' + Math.round(10 + 22 * t) + 'px rgba(255, 214, 107, ' + (0.3 + 0.45 * t).toFixed(2) + ')' });
+    } else {
+      dots.push({ x: x, y: y, size: 4, m: -2, color: 'rgb(' + mix(244, 255, t) + ', ' + mix(242, 214, t) + ', ' + mix(255, 107, t) + ')',
+        o: (0.28 + 0.72 * t).toFixed(2), s: (1 + 2.6 * t).toFixed(3), glow: 'none' });
+    }
+    var name = NAMES[key];
+    if (name) {
+      var lo = mapRange(0.35, 0.8, 0, 1, t);
+      var half = (star ? star * (1 + 0.6 * t) : 4 * (1 + 2.6 * t)) / 2;
+      labels.push({ x: x, y: y, text: name[0], sub: name[1],
+        href: (name[2] || 'NewProject') + '.dc.html', go: name[2] ? ' 데모 보기 →' : ' 이 아이디어로 만들기 →', o: lo.toFixed(2), pe: lo > 0.5 ? 'auto' : 'none', tf: tfFor(name[3], Math.round(half + 6 + 6 * lo)),
+        color: star ? '#ffd66b' : '#f4f2ff', bg: star ? 'rgba(20, 27, 58, 0.88)' : 'rgba(59, 47, 107, 0.9)',
+        border: star ? 'rgba(255, 214, 107, 0.55)' : 'rgba(244, 242, 255, 0.3)' });
+    }
+  }
+}
+return {
+  dots: dots,
+  labels: labels,
+  line: PATH.map(function (k) { var p = k.split(','); return cellX(+p[0]).toFixed(2) + ',' + cellY(+p[1]).toFixed(2); }).join(' '),
+  lineO: (0.65 + 0.35 * near).toFixed(2),
+  onMove: function (e) {
+    var b = e.currentTarget.getBoundingClientRect();
+    self._p = { active: true, x: e.clientX - b.left, y: e.clientY - b.top, w: b.width, h: b.height };
+    if (!self._raf) {
+      self._raf = requestAnimationFrame(function () { self._raf = null; self.setState(self._p); });
+    }
+  },
+  onLeave: function () { if (self._raf) { cancelAnimationFrame(self._raf); self._raf = null; } self.setState({ active: false }); }
+};
+}
+}
+</script>
+</body>
+</html>

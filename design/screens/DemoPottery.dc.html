@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>흙손 공방 데모</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+body{margin:0;background:#ffffff}
+a{color:#8c4528}a:hover{color:#6a321b}
+textarea::placeholder,input::placeholder{color:#8a8fa3}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #ff7a59;outline-offset:2px}
+@keyframes dmPop{0%{transform:translate(-50%,-50%) scale(.4)}100%{transform:translate(-50%,-50%) scale(1)}}
+@media (prefers-reduced-motion: reduce){.dm-pop{animation:none!important}}
+</style>
+</helmet>
+<div style="font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif; color: #1e2233; background: #ffffff; min-height: 900px; display: flex; flex-direction: column;">
+
+  <!-- 사용자가 만든 데모 (방문자에게 보이는 화면) -->
+  <div style="position: relative; flex: 1;">
+    <header style="border-bottom: 1px solid #f0efea;">
+      <div style="max-width: 1080px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+        <span style="font-size: 20px; font-weight: 800; color: #8c4528;">흙손 공방</span>
+        <nav aria-label="데모 메뉴" style="display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 15px;">
+          <a href="#" style="color: #1e2233; text-decoration: none; padding: 8px 0;">클래스</a>
+          <a href="#" style="color: #1e2233; text-decoration: none; padding: 8px 0;">작품 판매</a>
+          <a href="#" style="color: #1e2233; text-decoration: none; padding: 8px 0;">로그인</a>
+        </nav>
+      </div>
+    </header>
+
+    <main style="max-width: 1080px; margin: 0 auto; padding: 32px 24px 120px; display: flex; flex-direction: column; gap: 40px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 32px;">
+        <img src="img/demo-pottery.jpg" alt="도자기 공방에서 앞치마를 두른 사람이 물레 위의 작은 그릇을 두 손으로 빚고 있다. 뒤 선반에 초벌 작품들이 놓여 있다" style="flex: 1 1 360px; width: 360px; min-width: 0; max-width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 68%; border-radius: 12px; background: #f5ece4; display: block;">
+        <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 14px; color: #5d6378;">성수동 · 매주 수·토 오전 10시</span>
+          <h1 style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em; text-wrap: balance;">원데이 물레 클래스 (머그컵 2개)</h1>
+          <span style="font-size: 22px; font-weight: 700;">68,000원</span>
+          <span style="font-size: 14px; color: #5d6378;">이번 달 신청 5 / 6명</span>
+          <span style="height: 8px; border-radius: 999px; background: #f0efea; display: block;"><span style="display: block; width: 83%; height: 8px; border-radius: 999px; background: #8c4528;"></span></span>
+          <a href="#" style="margin-top: 10px; display: flex; align-items: center; justify-content: center; height: 54px; border-radius: 10px; background: #8c4528; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 700;">클래스 신청하기</a>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; max-width: 640px;">
+        <h2 style="margin: 0; font-size: 19px; font-weight: 700;">준비물</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.7; color: #5d6378;">앞치마와 도구는 공방에서 준비해요. 작품은 가마에 구운 뒤 3주 후에 받아가실 수 있어요.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <h2 style="margin: 0; font-size: 19px; font-weight: 700;">다른 클래스</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 8px;"><span style="aspect-ratio: 4 / 3; max-width: 100%; border-radius: 8px; background: #f7ebe4; display: block;"></span><span style="font-size: 15px; font-weight: 700;">핸드빌딩 접시 만들기</span><span style="font-size: 13px; color: #5d6378;">52,000원 · 3/6명</span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><span style="aspect-ratio: 4 / 3; max-width: 100%; border-radius: 8px; background: #f7ebe4; display: block;"></span><span style="font-size: 15px; font-weight: 700;">커플 머그 클래스</span><span style="font-size: 13px; color: #5d6378;">120,000원 · 2/4팀</span></div>
+          <div style="display: flex; flex-direction: column; gap: 8px;"><span style="aspect-ratio: 4 / 3; max-width: 100%; border-radius: 8px; background: #f7ebe4; display: block;"></span><span style="font-size: 15px; font-weight: 700;">4주 정규반</span><span style="font-size: 13px; color: #5d6378;">240,000원 · 5/8명</span></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 피드백 모드: 위치 고르기 -->
+    <sc-if value="{{placing}}" hint-placeholder-val="{{false}}">
+      <button type="button" aria-label="이 위치에 의견 남기기" onClick="{{place}}" style="position: absolute; inset: 0; border: 0; padding: 0; background: rgba(20, 27, 58, 0.08); cursor: crosshair; outline: 2px dashed #ff7a59; outline-offset: -6px;"></button>
+      <div role="status" style="position: absolute; top: 12px; left: 50%; transform: translateX(-50%); padding: 10px 16px; border-radius: 999px; background: #141b3a; color: #f4f2ff; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; pointer-events: none; white-space: nowrap;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #ffd66b;"></span>의견을 남길 위치를 클릭하세요</div>
+    </sc-if>
+
+    <!-- 핀 -->
+    <sc-if value="{{hasPin}}" hint-placeholder-val="{{false}}">
+      <span class="dm-pop" aria-hidden="true" style="position: absolute; left: {{pinX}}%; top: {{pinY}}px; width: 30px; height: 30px; border-radius: 999px; background: #ffd66b; color: #141b3a; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; transform: translate(-50%, -50%); box-shadow: 0 0 0 3px #141b3a, 0 0 24px rgba(255, 214, 107, 0.6); animation: dmPop 0.25s ease-out;">1</span>
+    </sc-if>
+
+    <!-- 댓글 입력 카드 -->
+    <sc-if value="{{writing}}" hint-placeholder-val="{{false}}">
+      <form aria-label="의견 남기기" style="position: absolute; left: {{cardX}}%; top: {{cardY}}px; width: 320px; max-width: calc(100% - 32px); box-sizing: border-box; padding: 18px; border-radius: 16px; background: #ffffff; border: 1px solid #e3e2dc; box-shadow: 0 16px 48px rgba(20, 27, 58, 0.2); display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label for="fb-name" style="font-size: 13px; font-weight: 700;">이름 <span style="font-weight: 500; color: #5d6378;">(선택)</span></label>
+          <input id="fb-name" type="text" placeholder="비워두면 익명으로 남아요" style="height: 40px; box-sizing: border-box; padding: 0 12px; border: 1px solid #e3e2dc; border-radius: 8px; font: inherit; font-size: 14px; color: #1e2233;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <label for="fb-text" style="font-size: 13px; font-weight: 700;">의견</label>
+          <textarea id="fb-text" rows="3" placeholder="이 부분에 대해 느낀 점을 적어주세요" value="{{text}}" onChange="{{onText}}" style="box-sizing: border-box; padding: 10px 12px; border: 1px solid #e3e2dc; border-radius: 8px; font: inherit; font-size: 14px; line-height: 1.5; color: #1e2233; resize: vertical;"></textarea>
+        </div>
+        <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 8px;">
+          <legend style="font-size: 13px; font-weight: 700; margin-bottom: 8px;">이 서비스를 써보고 싶나요?</legend>
+          <div style="display: flex; gap: 6px;">
+            <sc-for list="{{answers}}" as="a" hint-placeholder-count="2">
+              <button type="button" aria-pressed="{{a.pressed}}" onClick="{{a.pick}}" style="height: 34px; padding: 0 14px; border-radius: 999px; border: 1px solid {{a.border}}; background: {{a.bg}}; color: {{a.fg}}; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;">{{a.label}}</button>
+            </sc-for>
+          </div>
+        </fieldset>
+        <div style="display: flex; justify-content: flex-end; gap: 8px;">
+          <button type="button" onClick="{{cancel}}" style="height: 40px; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 8px; background: #ffffff; font: inherit; font-size: 14px; font-weight: 700; color: #1e2233; cursor: pointer;">취소</button>
+          <button type="button" onClick="{{submit}}" disabled="{{cantSubmit}}" style="height: 40px; padding: 0 16px; border: 0; border-radius: 8px; background: {{submitBg}}; font: inherit; font-size: 14px; font-weight: 800; color: #141b3a; cursor: pointer;">제출</button>
+        </div>
+      </form>
+    </sc-if>
+  </div>
+
+  <!-- 하단 고정 바 -->
+  <div style="position: sticky; bottom: 0; background: rgba(255, 255, 255, 0.96); border-top: 1px solid #e3e2dc;">
+    <div style="max-width: 1080px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5d6378; text-decoration: none; padding: 8px 0;">
+        <svg width="18" height="18" viewBox="0 0 28 28" aria-hidden="true"><polyline points="4,20 12,8 24,14" fill="none" stroke="#ff7a59" stroke-width="1.5" stroke-linecap="round"></polyline><circle cx="4" cy="20" r="3" fill="#141b3a"></circle><circle cx="12" cy="8" r="3.5" fill="#141b3a"></circle><circle cx="24" cy="14" r="2.5" fill="#141b3a"></circle></svg>
+        데모메이커로 제작됨
+      </a>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+        <button type="button" aria-pressed="{{likedAria}}" onClick="{{toggleLike}}" style="height: 42px; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 999px; background: {{likeBg}}; font: inherit; font-size: 14px; font-weight: 700; color: #1e2233; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="{{likeFill}}" stroke="#b8461f" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg>
+          좋아요 {{likes}}
+        </button>
+        <sc-if value="{{idle}}" hint-placeholder-val="{{true}}">
+          <button type="button" onClick="{{startFeedback}}" style="height: 42px; padding: 0 18px; border: 0; border-radius: 999px; background: #141b3a; color: #f4f2ff; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffd66b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"></path><circle cx="12" cy="11" r="2"></circle></svg>
+            피드백 남기기
+          </button>
+        </sc-if>
+        <sc-if value="{{notIdle}}" hint-placeholder-val="{{false}}">
+          <button type="button" onClick="{{cancel}}" style="height: 42px; padding: 0 18px; border: 1px solid #e3e2dc; border-radius: 999px; background: #ffffff; color: #1e2233; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">피드백 모드 끄기</button>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+    <div role="status" style="position: fixed; left: 50%; bottom: 84px; transform: translateX(-50%); padding: 12px 16px; border-radius: 10px; background: #141b3a; color: #f4f2ff; font-size: 14px; display: flex; align-items: center; gap: 8px; white-space: nowrap;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #ffd66b; box-shadow: 0 0 10px rgba(255, 214, 107, 0.7);"></span>피드백이 전달되었어요. 만든 사람의 꿈에 빛을 더했어요</div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+constructor(props) { super(props); this.state = { mode: 'idle', pin: null, text: '', answer: '', liked: false, sent: false }; }
+renderVals() {
+var self = this;
+var st = this.state || {};
+var mode = st.mode || 'idle';
+var pin = st.pin;
+var canSubmit = !!(st.text && st.text.trim());
+return {
+  idle: mode === 'idle', notIdle: mode !== 'idle',
+  placing: mode === 'placing', writing: mode === 'writing',
+  startFeedback: function () { self.setState({ mode: 'placing', pin: null, text: '', answer: '', sent: false }); },
+  place: function (e) {
+    var r = e.currentTarget.getBoundingClientRect();
+    var xPct = Math.max(2, Math.min(98, (e.clientX - r.left) / r.width * 100));
+    var y = Math.max(16, e.clientY - r.top);
+    self.setState({ mode: 'writing', pin: { x: xPct, y: y, w: r.width } });
+  },
+  hasPin: !!pin,
+  pinX: pin ? pin.x : 0, pinY: pin ? pin.y : 0,
+  cardX: pin ? Math.max(1, Math.min(pin.x + 2, 100 - (340 / (pin.w || 1440)) * 100)) : 0,
+  cardY: pin ? pin.y + 24 : 0,
+  text: st.text || '',
+  onText: function (e) { self.setState({ text: e.target.value }); },
+  answers: ['예', '아니요'].map(function (a) { var on = st.answer === a; return { label: a, pressed: on ? 'true' : 'false', border: on ? '#141b3a' : '#e3e2dc', bg: on ? '#141b3a' : '#ffffff', fg: on ? '#f4f2ff' : '#1e2233', pick: function () { self.setState({ answer: a }); } }; }),
+  cantSubmit: !canSubmit,
+  submitBg: canSubmit ? '#ff7a59' : '#f3c9bd',
+  submit: function () { if (!canSubmit) return; self.setState({ mode: 'idle', sent: true }); },
+  cancel: function () { self.setState({ mode: 'idle', pin: null, text: '', answer: '' }); },
+  sent: !!st.sent,
+  likes: st.liked ? 13 : 12,
+  likedAria: st.liked ? 'true' : 'false',
+  likeBg: st.liked ? '#fff1ec' : '#ffffff',
+  likeFill: st.liked ? '#ff7a59' : 'none',
+  toggleLike: function () { self.setState({ liked: !st.liked }); }
+};
+}
+}
+</script>
+</body>
+</html>

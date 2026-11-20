@@ -1,0 +1,34 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-11-20T09:20:00Z" },
+  "title": "데모메이커 랜딩 시안",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 3000, "title": "랜딩 페이지", "expand": "fill", "is_interactive": true },
+    "Dashboard.dc.html": { "x": 1520, "y": 0, "w": 1440, "h": 900, "title": "대시보드", "expand": "fill", "is_interactive": true },
+    "Structure.dc.html": { "x": 1520, "y": 1020, "w": 1440, "h": 900, "title": "구조 확인", "expand": "fill", "is_interactive": true },
+    "Editor.dc.html": { "x": 1520, "y": 2040, "w": 1440, "h": 900, "title": "에디터", "expand": "fill", "is_interactive": true },
+    "Published.dc.html": { "x": 1520, "y": 3060, "w": 1440, "h": 900, "title": "배포 완료", "expand": "fill", "is_interactive": true },
+    "Feedback.dc.html": { "x": 1520, "y": 4080, "w": 1440, "h": 900, "title": "피드백 보기", "expand": "fill", "is_interactive": true },
+    "Gallery.dc.html": { "x": 0, "y": 3120, "w": 1440, "h": 1300, "title": "템플릿 갤러리", "expand": "fill", "is_interactive": true },
+    "NewProject.dc.html": { "x": 0, "y": 4540, "w": 1440, "h": 1000, "title": "새 프로젝트 만들기", "expand": "fill", "is_interactive": true },
+    "Generating.dc.html": { "x": 1520, "y": 5100, "w": 1440, "h": 900, "title": "AI 생성 로딩", "expand": "fill", "is_interactive": true },
+    "Login.dc.html": { "x": 3040, "y": 0, "w": 1440, "h": 900, "title": "로그인 / 회원가입", "expand": "fill", "is_interactive": true },
+    "Preview.dc.html": { "x": 3040, "y": 1020, "w": 1440, "h": 900, "title": "미리보기 모드", "expand": "fill", "is_interactive": true },
+    "Settings.dc.html": { "x": 3040, "y": 2040, "w": 1440, "h": 900, "title": "프로젝트 설정", "expand": "fill", "is_interactive": true },
+    "Account.dc.html": { "x": 3040, "y": 3060, "w": 1440, "h": 900, "title": "계정 설정", "expand": "fill", "is_interactive": true },
+    "PublicDemo.dc.html": { "x": 3040, "y": 4080, "w": 1440, "h": 900, "title": "공개 데모 페이지", "expand": "fill", "is_interactive": true },
+    "DemoBookstore.dc.html": { "x": 4560, "y": 0, "w": 1440, "h": 900, "title": "공개 데모 · 동네 책방", "expand": "fill", "is_interactive": true },
+    "DemoPottery.dc.html": { "x": 4560, "y": 1020, "w": 1440, "h": 900, "title": "공개 데모 · 도자기 공방", "expand": "fill", "is_interactive": true },
+    "DemoStudy.dc.html": { "x": 4560, "y": 2040, "w": 1440, "h": 900, "title": "공개 데모 · 코딩 스터디", "expand": "fill", "is_interactive": true },
+    "DemoCamping.dc.html": { "x": 4560, "y": 3060, "w": 1440, "h": 900, "title": "공개 데모 · 함께 캠핑", "expand": "fill", "is_interactive": true },
+    "DemoCafe.dc.html": { "x": 4560, "y": 4080, "w": 1440, "h": 900, "title": "공개 데모 · 골목 카페", "expand": "fill", "is_interactive": true },
+    "DemoWalk.dc.html": { "x": 4560, "y": 5100, "w": 1440, "h": 900, "title": "공개 데모 · 산책 메이트", "expand": "fill", "is_interactive": true }
+  },
+  "order": ["Main.dc.html", "Dashboard.dc.html", "Structure.dc.html", "Editor.dc.html", "Published.dc.html", "Feedback.dc.html", "Gallery.dc.html", "NewProject.dc.html", "Generating.dc.html", "Login.dc.html", "Preview.dc.html", "Settings.dc.html", "Account.dc.html", "PublicDemo.dc.html", "DemoBookstore.dc.html", "DemoPottery.dc.html", "DemoStudy.dc.html", "DemoCamping.dc.html", "DemoCafe.dc.html", "DemoWalk.dc.html"],
+  "notes": {},
+  "designSystems": [
+    { "title": "데모메이커", "namespace": "demomaker", "artifact": "https://claude.ai/artifact/1BzokzXtPWRNywEEisRASG", "version": "1795140265-62a5", "copiedAt": "2026-11-20T09:20:00Z" }
+  ]
+}

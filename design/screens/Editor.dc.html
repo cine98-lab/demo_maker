@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>에디터</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+body{margin:0;background:#eeede8}
+a{color:#b8461f}a:hover{color:#8f3415}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #ff7a59;outline-offset:2px}
+</style>
+</helmet>
+<div style="font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif; color: #1e2233; background: #eeede8; min-height: 900px; display: flex; flex-direction: column;">
+
+  <!-- 상단 바 -->
+  <header style="background: #ffffff; border-bottom: 1px solid #e3e2dc; padding: 10px 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px;">
+      <a href="Dashboard.dc.html" aria-label="대시보드로" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #e3e2dc;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e2233" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></a>
+      <div style="display: flex; flex-direction: column;">
+        <span style="font-size: 15px; font-weight: 700;">동네 반찬 공동구매</span>
+        <span style="font-size: 12px; color: #23855a; font-weight: 500;">저장됨</span>
+      </div>
+      <div role="tablist" aria-label="편집 모드" style="display: flex; padding: 3px; border-radius: 8px; background: #f2f1ec; margin-left: 8px;">
+        <button type="button" role="tab" aria-selected="true" style="height: 34px; padding: 0 14px; border: 0; border-radius: 6px; background: #ffffff; font: inherit; font-size: 14px; font-weight: 700; color: #1e2233; box-shadow: 0 1px 2px rgba(20, 27, 58, 0.08); cursor: pointer;">디자인</button>
+        <button type="button" role="tab" aria-selected="false" style="height: 34px; padding: 0 14px; border: 0; border-radius: 6px; background: transparent; font: inherit; font-size: 14px; font-weight: 500; color: #5d6378; cursor: pointer;">데이터</button>
+      </div>
+    </div>
+    <div role="group" aria-label="기기 전환" style="display: flex; gap: 2px; padding: 3px; border-radius: 8px; background: #f2f1ec;">
+      <button type="button" aria-label="PC" aria-pressed="true" style="width: 38px; height: 34px; border: 0; border-radius: 6px; background: #ffffff; cursor: pointer; box-shadow: 0 1px 2px rgba(20, 27, 58, 0.08);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e2233" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8M12 16v4"></path></svg></button>
+      <button type="button" aria-label="태블릿" aria-pressed="false" style="width: 38px; height: 34px; border: 0; border-radius: 6px; background: transparent; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5d6378" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"></rect></svg></button>
+      <button type="button" aria-label="모바일" aria-pressed="false" style="width: 38px; height: 34px; border: 0; border-radius: 6px; background: transparent; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5d6378" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"></rect></svg></button>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px;">
+      <button type="button" aria-label="되돌리기" style="width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e2233" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14L4 9l5-5"></path><path d="M4 9h11a5 5 0 0 1 0 10h-3"></path></svg></button>
+      <button type="button" aria-label="다시하기" style="width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; cursor: pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e2233" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14l5-5-5-5"></path><path d="M20 9H9a5 5 0 0 0 0 10h3"></path></svg></button>
+      <a href="Preview.dc.html" style="height: 40px; display: inline-flex; align-items: center; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 8px; color: #1e2233; text-decoration: none; font-size: 14px; font-weight: 700;">미리보기</a>
+      <a href="Published.dc.html" style="height: 40px; display: inline-flex; align-items: center; padding: 0 18px; border-radius: 8px; background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 14px; font-weight: 800;">배포</a>
+      <a href="Settings.dc.html" aria-label="프로젝트 설정" style="width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; text-decoration: none; font-size: 18px; color: #1e2233;">⋯</a>
+    </div>
+  </header>
+
+  <!-- AI 수정 요청 -->
+  <form style="background: #ffffff; border-bottom: 1px solid #e3e2dc; padding: 10px 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
+    <label for="ai-ask" style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #3b2f6b;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b2f6b" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"></path></svg>
+      AI에게 부탁하기
+    </label>
+    <input id="ai-ask" type="text" placeholder="예: 이 섹션을 더 신뢰감 있게 바꿔줘" style="flex: 1 1 300px; min-width: 0; height: 40px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 8px; background: #fafaf7; font: inherit; font-size: 14px; color: #1e2233;">
+    <button type="button" style="height: 40px; padding: 0 16px; border: 0; border-radius: 8px; background: #3b2f6b; color: #f4f2ff; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">요청</button>
+  </form>
+
+  <div style="flex: 1; display: flex; flex-wrap: wrap; min-height: 0;">
+
+    <!-- 왼쪽 패널 -->
+    <aside aria-label="페이지와 블록" style="flex: 1 1 240px; max-width: 280px; background: #ffffff; border-right: 1px solid #e3e2dc; padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px;">
+      <div role="tablist" aria-label="왼쪽 패널" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; padding: 3px; border-radius: 8px; background: #f2f1ec;">
+        <button type="button" role="tab" aria-selected="true" style="height: 32px; border: 0; border-radius: 6px; background: #ffffff; font: inherit; font-size: 13px; font-weight: 700; color: #1e2233; cursor: pointer; box-shadow: 0 1px 2px rgba(20, 27, 58, 0.08);">페이지</button>
+        <button type="button" role="tab" aria-selected="false" style="height: 32px; border: 0; border-radius: 6px; background: transparent; font: inherit; font-size: 13px; color: #5d6378; cursor: pointer;">블록</button>
+        <button type="button" role="tab" aria-selected="false" style="height: 32px; border: 0; border-radius: 6px; background: transparent; font: inherit; font-size: 13px; color: #5d6378; cursor: pointer;">테마</button>
+      </div>
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; font-size: 14px;">
+        <li><button type="button" style="width: 100%; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; font: inherit; color: #1e2233; text-align: left; cursor: pointer;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span>홈</button></li>
+        <li><button type="button" style="width: 100%; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; font: inherit; color: #1e2233; text-align: left; cursor: pointer;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span>상품 목록</button></li>
+        <li><button type="button" aria-current="page" style="width: 100%; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border: 0; border-radius: 8px; background: #fff1ec; font: inherit; font-weight: 700; color: #1e2233; text-align: left; cursor: pointer;"><span style="width: 10px; height: 10px; border-radius: 999px; background: #ff7a59;"></span>상품 상세</button></li>
+        <li><button type="button" style="width: 100%; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; font: inherit; color: #1e2233; text-align: left; cursor: pointer;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span>공동구매 참여</button></li>
+        <li><button type="button" style="width: 100%; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; font: inherit; color: #1e2233; text-align: left; cursor: pointer;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span>결제 완료</button></li>
+        <li><button type="button" style="width: 100%; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; font: inherit; color: #1e2233; text-align: left; cursor: pointer;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span>마이페이지</button></li>
+        <li><button type="button" style="width: 100%; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; font: inherit; color: #1e2233; text-align: left; cursor: pointer;"><span style="width: 8px; height: 8px; border-radius: 999px; background: #141b3a;"></span>후기</button></li>
+      </ul>
+      <button type="button" style="height: 40px; border: 1px dashed #c9c7bf; border-radius: 8px; background: transparent; font: inherit; font-size: 14px; font-weight: 700; color: #5d6378; cursor: pointer;">+ 페이지</button>
+    </aside>
+
+    <!-- 가운데 캔버스 -->
+    <main aria-label="캔버스" style="flex: 999 1 480px; min-width: 0; padding: 28px; box-sizing: border-box; display: flex; justify-content: center; overflow: auto;">
+      <div style="width: 100%; max-width: 760px; background: #ffffff; border-radius: 8px; box-shadow: 0 1px 2px rgba(20, 27, 58, 0.06), 0 8px 32px rgba(20, 27, 58, 0.08); overflow: hidden; align-self: flex-start;">
+        <div style="padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f0efea; font-size: 14px;">
+          <b style="font-size: 16px;">반찬나눔</b>
+          <span style="color: #5d6378;">상품 · 내 공동구매 · 로그인</span>
+        </div>
+        <div style="position: relative; margin: 12px; padding: 20px; border: 2px solid #ff7a59; border-radius: 8px; display: flex; flex-wrap: wrap; gap: 20px;">
+          <span style="position: absolute; top: -12px; left: 12px; padding: 2px 8px; border-radius: 6px; background: #ff7a59; color: #141b3a; font-size: 12px; font-weight: 700;">상품 상세 블록</span>
+          <div style="position: absolute; top: -14px; right: 12px; display: flex; gap: 4px;">
+            <button type="button" aria-label="위로 이동" style="width: 28px; height: 28px; border: 1px solid #e3e2dc; border-radius: 6px; background: #ffffff; cursor: pointer; font-size: 12px;">↑</button>
+            <button type="button" aria-label="아래로 이동" style="width: 28px; height: 28px; border: 1px solid #e3e2dc; border-radius: 6px; background: #ffffff; cursor: pointer; font-size: 12px;">↓</button>
+            <button type="button" aria-label="복제" style="width: 28px; height: 28px; border: 1px solid #e3e2dc; border-radius: 6px; background: #ffffff; cursor: pointer; font-size: 12px;">⧉</button>
+            <button type="button" aria-label="삭제" style="width: 28px; height: 28px; border: 1px solid #e3e2dc; border-radius: 6px; background: #ffffff; cursor: pointer; font-size: 12px; color: #c93a3a;">✕</button>
+          </div>
+          <div style="flex: 1 1 240px; aspect-ratio: 4 / 3; max-width: 100%; border-radius: 8px; background: #f5ece4; display: flex; align-items: center; justify-content: center; color: #8a7f74; font-size: 13px;">반찬 사진</div>
+          <div style="flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font-size: 13px; color: #5d6378;">망원동 · 오늘 저녁 7시 마감</span>
+            <span style="font-size: 22px; font-weight: 800; outline: 1px dashed #ff7a59; outline-offset: 3px;">한우 장조림 소분 (200g)</span>
+            <span style="font-size: 18px; font-weight: 700;">4,500원</span>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-size: 13px; color: #5d6378;">모집 현황 8 / 10명</span>
+              <span style="height: 8px; border-radius: 999px; background: #f0efea; display: block;"><span style="display: block; width: 80%; height: 8px; border-radius: 999px; background: #ff7a59;"></span></span>
+            </div>
+            <span style="margin-top: 6px; display: inline-flex; align-items: center; justify-content: center; height: 46px; border-radius: 8px; background: #2f7d5b; color: #ffffff; font-size: 15px; font-weight: 700;">공동구매 참여</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: center; margin: -2px 0;">
+          <button type="button" aria-label="블록 추가" style="width: 28px; height: 28px; border-radius: 999px; border: 1px solid #e3e2dc; background: #ffffff; color: #5d6378; font-size: 16px; cursor: pointer;">+</button>
+        </div>
+        <div style="margin: 12px; padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-size: 16px; font-weight: 700;">픽업 안내</span>
+          <span style="font-size: 14px; color: #5d6378; line-height: 1.7;">마감 후 다음 날 오후 2시부터 6시까지 망원시장 입구 반찬나눔 부스에서 받아가실 수 있어요.</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- 오른쪽 속성 패널 -->
+    <aside aria-label="속성" style="flex: 1 1 260px; max-width: 300px; background: #ffffff; border-left: 1px solid #e3e2dc; padding: 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #b8461f;">선택한 요소</span>
+        <span style="font-size: 16px; font-weight: 700;">버튼 · 공동구매 참여</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="btn-text" style="font-size: 13px; font-weight: 700;">버튼 글자</label>
+        <input id="btn-text" type="text" value="공동구매 참여" style="height: 40px; box-sizing: border-box; padding: 0 12px; border: 1px solid #e3e2dc; border-radius: 8px; font: inherit; font-size: 14px; color: #1e2233;">
+      </div>
+      <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 8px;">
+        <legend style="font-size: 13px; font-weight: 700; margin-bottom: 8px;">누르면</legend>
+        <label style="display: flex; align-items: center; gap: 8px; font-size: 14px;"><input type="radio" name="action" checked>페이지로 이동</label>
+        <label style="display: flex; align-items: center; gap: 8px; font-size: 14px;"><input type="radio" name="action">가짜 동작 (로그인, 가입, 장바구니, 폼 제출)</label>
+      </fieldset>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="link-page" style="font-size: 13px; font-weight: 700;">연결할 페이지</label>
+        <select id="link-page" style="height: 40px; padding: 0 10px; border: 1px solid #e3e2dc; border-radius: 8px; background: #ffffff; font: inherit; font-size: 14px; color: #1e2233;">
+          <option>공동구매 참여</option>
+          <option>결제 완료</option>
+          <option>마이페이지</option>
+        </select>
+        <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #5d6378;"><span style="width: 6px; height: 6px; border-radius: 999px; background: #ff7a59;"></span>상품 상세 → 공동구매 참여로 이어져요</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid #f0efea;">
+        <span style="font-size: 13px; font-weight: 700;">상태 미리보기</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+          <button type="button" aria-pressed="true" style="height: 32px; padding: 0 10px; border: 1px solid #141b3a; border-radius: 999px; background: #141b3a; color: #f4f2ff; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer;">로그인 전</button>
+          <button type="button" aria-pressed="false" style="height: 32px; padding: 0 10px; border: 1px solid #e3e2dc; border-radius: 999px; background: #ffffff; color: #1e2233; font: inherit; font-size: 12px; cursor: pointer;">로그인 후</button>
+          <button type="button" aria-pressed="false" style="height: 32px; padding: 0 10px; border: 1px solid #e3e2dc; border-radius: 999px; background: #ffffff; color: #1e2233; font: inherit; font-size: 12px; cursor: pointer;">빈 목록</button>
+          <button type="button" aria-pressed="false" style="height: 32px; padding: 0 10px; border: 1px solid #e3e2dc; border-radius: 999px; background: #ffffff; color: #1e2233; font: inherit; font-size: 12px; cursor: pointer;">오류</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

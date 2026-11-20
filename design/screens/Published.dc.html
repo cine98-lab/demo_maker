@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>배포 완료</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+body{margin:0;background:#141b3a}
+a{color:#b8461f}a:hover{color:#8f3415}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #ffd66b;outline-offset:2px}
+</style>
+</helmet>
+<div style="font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif; color: #f4f2ff; background: #141b3a; min-height: 900px;">
+  <div style="max-width: 1120px; margin: 0 auto; padding: 48px 24px 64px; display: flex; flex-direction: column; align-items: center; gap: 32px;">
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;">
+      <svg viewBox="0 0 520 170" style="width: 100%; max-width: 520px; height: auto;" aria-hidden="true">
+        <g fill="#f4f2ff" opacity="0.35"><circle cx="20" cy="30" r="1.5"></circle><circle cx="140" cy="12" r="1"></circle><circle cx="380" cy="20" r="1.5"></circle><circle cx="500" cy="60" r="1"></circle><circle cx="30" cy="150" r="1"></circle><circle cx="470" cy="150" r="1.5"></circle><circle cx="260" cy="160" r="1"></circle></g>
+        <polyline points="60,120 140,70 220,95 300,45 380,85 460,60" fill="none" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        <line x1="220" y1="95" x2="250" y2="145" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round"></line>
+        <line x1="380" y1="85" x2="410" y2="140" stroke="#ffb3a7" stroke-width="1.5" stroke-linecap="round"></line>
+        <circle cx="300" cy="45" r="34" fill="#ffd66b" opacity="0.12"></circle>
+        <circle cx="60" cy="120" r="6" fill="#ffd66b"></circle><circle cx="140" cy="70" r="8" fill="#ffd66b"></circle><circle cx="220" cy="95" r="6" fill="#ffd66b"></circle><circle cx="300" cy="45" r="11" fill="#ffd66b"></circle><circle cx="380" cy="85" r="7" fill="#ffd66b"></circle><circle cx="460" cy="60" r="6" fill="#ffd66b"></circle><circle cx="250" cy="145" r="5" fill="#ffd66b"></circle><circle cx="410" cy="140" r="5" fill="#ffd66b"></circle>
+      </svg>
+      <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: #ffb3a7;">배포 완료</p>
+      <h1 style="margin: 0; font-size: 40px; line-height: 1.25; font-weight: 800; letter-spacing: -0.02em; text-wrap: balance;">이제 다른 사람들도<br>당신의 꿈을 볼 수 있어요</h1>
+    </div>
+
+    <section aria-label="배포 설정" style="width: 100%; max-width: 760px; box-sizing: border-box; background: #ffffff; color: #1e2233; border-radius: 20px; padding: 28px; display: flex; flex-wrap: wrap; gap: 28px; box-shadow: 0 0 48px rgba(255, 214, 107, 0.18);">
+      <div style="flex: 999 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <label for="share-url" style="font-size: 14px; font-weight: 700;">공유 링크</label>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <input id="share-url" type="text" readonly value="banchan-nanum.demomaker.app" style="flex: 1 1 220px; min-width: 0; height: 46px; box-sizing: border-box; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 8px; background: #fafaf7; font: inherit; font-size: 15px; color: #1e2233;">
+            <button type="button" style="height: 46px; padding: 0 18px; border: 0; border-radius: 8px; background: #ff7a59; color: #141b3a; font: inherit; font-size: 15px; font-weight: 800; cursor: pointer;">복사</button>
+          </div>
+        </div>
+        <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px;">
+          <legend style="font-size: 14px; font-weight: 700; margin-bottom: 10px;">공개 범위</legend>
+          <label style="display: flex; align-items: center; gap: 10px; font-size: 15px;"><input type="radio" name="scope">전체 공개</label>
+          <label style="display: flex; align-items: center; gap: 10px; font-size: 15px;"><input type="radio" name="scope" checked>링크가 있는 사람만</label>
+          <label style="display: flex; align-items: center; gap: 10px; font-size: 15px;"><input type="radio" name="scope">비밀번호 보호</label>
+        </fieldset>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 18px; border-top: 1px solid #f0efea;">
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span id="fb-label" style="font-size: 14px; font-weight: 700;">피드백 받기</span>
+            <span style="font-size: 13px; color: #5d6378;">방문자가 화면에 별(핀)을 남길 수 있어요</span>
+          </div>
+          <button type="button" role="switch" aria-checked="true" aria-labelledby="fb-label" style="width: 52px; height: 30px; flex: none; border: 0; border-radius: 999px; background: #141b3a; padding: 3px; display: flex; justify-content: flex-end; cursor: pointer;"><span style="width: 24px; height: 24px; border-radius: 999px; background: #ffd66b;"></span></button>
+        </div>
+      </div>
+      <div style="flex: 1 1 180px; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <div role="img" aria-label="QR 코드 자리" style="width: 168px; height: 168px; border-radius: 12px; border: 1px solid #e3e2dc; background: #fafaf7; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #5d6378;">QR 코드</div>
+        <button type="button" style="height: 40px; padding: 0 14px; border: 1px solid #e3e2dc; border-radius: 8px; background: #ffffff; color: #1e2233; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">이미지 저장</button>
+      </div>
+    </section>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+      <a href="PublicDemo.dc.html" style="display: inline-flex; align-items: center; height: 50px; padding: 0 26px; border-radius: 12px; background: #ff7a59; color: #141b3a; text-decoration: none; font-size: 16px; font-weight: 800;">데모 열기</a>
+      <a href="Dashboard.dc.html" style="display: inline-flex; align-items: center; height: 50px; padding: 0 22px; border-radius: 12px; border: 1px solid #5a4d92; background: #3b2f6b; color: #f4f2ff; text-decoration: none; font-size: 16px; font-weight: 700;">대시보드로</a>
+      <a href="Editor.dc.html" style="display: inline-flex; align-items: center; height: 50px; padding: 0 18px; color: #ffd66b; text-decoration: none; font-size: 15px; font-weight: 700;">계속 편집하기 →</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
